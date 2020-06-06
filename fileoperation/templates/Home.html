@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>上传下载</title>
+</head>
+<body>
+    <form action="{% url 'upload'%}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <input type="file" name="filename" value="" multiple="multiple">
+        
+        <input type="submit" value="上传">
+        
+    </form>
+    
+    <ul> 
+         <form action="{% url 'wirtxtt'%}" enctype="multipart/form-data" method="GET">
+           
+          
+        <input type="submit" value="运行">
+        </form>
+        
+        
+    
+
+        
+    </ul>    
+    
+ 
+    <ul>
+        {% for file in files %}
+            <li><a href="{% url 'download' file %}">{{ file }}</a></li>
+            <a href="/delete/?nid={{ file }}"><button class="btn btn-primary">删除</button></a>
+            
+        {% endfor %}
+               
+    </ul>
+          
+
+    
+
+
+
+   
+</body>
+</html>
+
